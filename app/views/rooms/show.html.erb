@@ -1,4 +1,44 @@
-<h1>ActionCable Chat</h1>
-<div id="messages">
-  <%= render @messages %>
+<% content_for :title, 'admin | Action Cable Chat' %>
+<div class="header">
+  <div class="team-menu">ActionCable</div>
+
+  <div class="channel-menu">
+    <span class="channel-menu_name"><span class="channel-menu_prefix">#</span> admin</span>
+  </div>
+</div>
+<div class="main">
+  <div class="listings">
+    <div class="listings_channels">
+      <h2 class="listings_header">Channels</h2>
+      <ul class="channel_list">
+        <li class="channel active">
+          <a class="channel_name"><span><span class="prefix">#</span>admin</span></a>
+        </li>
+        <li class="channel">
+          <a class="channel_name"><span class="unread">10</span><span><span class="prefix">#</span>general</span></a>
+        </li>
+      </ul>
+    </div>
+    <div class="listings_direct-messages">
+      <h2 class="listings_header">Direct Messages</h2>
+      <ul class="channel_list">
+        <li class="channel">
+          <a class="channel_name"><span class="unread">20</span><span><span class="prefix"> </span>dhh@basecamp.com</span></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="message-history" id="messages">
+    <%= render @messages %>
+  </div>
+</div>
+<div class="footer">
+  <div class="user-menu">
+    <span class="user-menu_profile-pic"></span><span class="user-menu_username"><%= current_user.email %></span>
+    <span class="connection_status">online</span>
+    <span class="logout"><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></span>
+  </div>
+  <div class="input-box">
+    <input type="text" class="input-box_text" id="message_input"/>
+  </div>
 </div>
